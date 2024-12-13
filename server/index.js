@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
+const UserRoutes = require('./routes/UserRoute')
 const ResultRoutes = require('./routes/ResultRoute')
 
 dotenv.config();
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 });
 
 // Use test routes
+app.use('/api/users', UserRoutes);
 app.use('/api/results', ResultRoutes);
 
 
