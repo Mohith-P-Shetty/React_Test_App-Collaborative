@@ -1,0 +1,137 @@
+[
+  {
+    "_id": 19,
+    "questionId": "Q019",
+    "jobAppliedFor": "Web Developer",
+    "category": "Coding",
+    "question": "Which of the following is used to add a comment in JavaScript?",
+    "options": ["// comment", "<!-- comment -->", "# comment", "/* comment */"],
+    "correctOption": "// comment",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 20,
+    "questionId": "Q020",
+    "jobAppliedFor": "Web Developer",
+    "category": "Math",
+    "question": "What is the result of 2^3?",
+    "options": ["6", "8", "4", "5"],
+    "correctOption": "8",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 21,
+    "questionId": "Q021",
+    "jobAppliedFor": "Web Developer",
+    "category": "Analytical",
+    "question": "If an item is sold at 15% profit, and the cost price is $200, what is the selling price?",
+    "options": ["$230", "$250", "$220", "$210"],
+    "correctOption": "$230",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 22,
+    "questionId": "Q022",
+    "jobAppliedFor": "Data Scientist",
+    "category": "Coding",
+    "question": "What does 'pandas' stand for in Python?",
+    "options": [
+      "Python Data Analysis",
+      "Python Analysis",
+      "Panel Data Analysis",
+      "Public Data System"
+    ],
+    "correctOption": "Panel Data Analysis",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 23,
+    "questionId": "Q023",
+    "jobAppliedFor": "Data Scientist",
+    "category": "Math",
+    "question": "What is the derivative of x^2?",
+    "options": ["2x", "x^2", "x", "2x^2"],
+    "correctOption": "2x",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 24,
+    "questionId": "Q024",
+    "jobAppliedFor": "Data Scientist",
+    "category": "Logical",
+    "question": "If a data point lies far from the average in a dataset, what do you call it?",
+    "options": ["Outlier", "Median", "Mean", "Mode"],
+    "correctOption": "Outlier",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 25,
+    "questionId": "Q025",
+    "jobAppliedFor": "Marketing Manager",
+    "category": "Analytical",
+    "question": "Which metric is used to calculate the success of an email marketing campaign?",
+    "options": [
+      "Conversion Rate",
+      "Click-Through Rate",
+      "Bounce Rate",
+      "Open Rate"
+    ],
+    "correctOption": "Click-Through Rate",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 26,
+    "questionId": "Q026",
+    "jobAppliedFor": "Marketing Manager",
+    "category": "Math",
+    "question": "A product is sold for $250, with a profit margin of 20%. What is the cost price?",
+    "options": ["$200", "$250", "$300", "$220"],
+    "correctOption": "$200",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 27,
+    "questionId": "Q027",
+    "jobAppliedFor": "Marketing Manager",
+    "category": "Logical",
+    "question": "Which of the following is not a part of the marketing mix?",
+    "options": ["Product", "Price", "Promotion", "Profit"],
+    "correctOption": "Profit",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 28,
+    "questionId": "Q028",
+    "jobAppliedFor": "Business Analyst",
+    "category": "Analytical",
+    "question": "Which type of analysis helps in determining if a business's performance is improving?",
+    "options": [
+      "SWOT Analysis",
+      "Gap Analysis",
+      "Trend Analysis",
+      "PEST Analysis"
+    ],
+    "correctOption": "Trend Analysis",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 29,
+    "questionId": "Q029",
+    "jobAppliedFor": "Business Analyst",
+    "category": "Math",
+    "question": "The formula for calculating Return on Investment (ROI) is: (Profit / Investment) * 100. If the profit is $500 and the investment is $2000, what is the ROI?",
+    "options": ["50%", "25%", "20%", "100%"],
+    "correctOption": "25%",
+    "status": "PUBLISH"
+  },
+  {
+    "_id": 30,
+    "questionId": "Q030",
+    "jobAppliedFor": "Business Analyst",
+    "category": "Logical",
+    "question": "Which of these is not a common decision-making model used in business analysis?",
+    "options": ["SWOT", "Pestle", "Waterfall", "CRISP-DM"],
+    "correctOption": "Waterfall",
+    "status": "PUBLISH"
+  }
+]

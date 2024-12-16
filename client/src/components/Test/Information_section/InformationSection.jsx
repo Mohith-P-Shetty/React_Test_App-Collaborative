@@ -1,80 +1,67 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Accordion, Button } from "react-bootstrap";
+import { setCurrentQuestion } from "../../../redux/Slices/testMetaDataSlice"; // Import Redux action
+import "./InformationSection.css";
 
 const InformationSection = () => {
-  //   const [selectedSection, setSelectedSection] = useState('Aptitude'); // Track selected section
-  const [isSubmitted, setIsSubmitted] = useState(false); // Track submission status
+  const dispatch = useDispatch();
+  const { questions } = useSelector((state) => state.testMetaData); // Get questions and current question index from Redux
 
-  // Define questions under different sections
-  const sections = {
-    Aptitude: [
-      { questionNumber: 1 },
-      { questionNumber: 2 },
-      { questionNumber: 3 },
-    ],
-    Verbal: [
-      { questionNumber: 1 },
-      { questionNumber: 2 },
-      { questionNumber: 3 },
-    ],
+  // Function to determine the button color based on the question's visited and selectedOption
+  const getButtonClass = (question) => {
+    if (question.selectedOption) {
+      return "question-button answered"; // Green if answered
+    } else if (question.visited) {
+      return "question-button not-answered"; // Red if not answered but visited
+    } else {
+      return "question-button not-viewed"; // Gray if not visited
+    }
   };
 
-  //   const handleSectionChange = (section) => {
-  //     setSelectedSection(section);
-  //     setIsSubmitted(false); // Reset submission status when changing sections
-  //   };
+  // Group questions by category (section)
+  const sections = questions.reduce((acc, question) => {
+    if (!acc[question.category]) {
+      acc[question.category] = [];
+    }
+    acc[question.category].push(question);
+    return acc;
+  }, {});
 
-  const handleSubmit = () => {
-    alert("Quiz Submitted!");
-    setIsSubmitted(true);
+  // Handle button click to navigate to a specific question
+  const handleQuestionClick = (index) => {
+    dispatch(setCurrentQuestion(index)); // Dispatch action to set the current question index
   };
 
   return (
-    <div>
-      <h3>Question Info</h3>
-      <p>Additional information about the question goes here.</p>
+    <div className="information-section">
+      <h3>Question Information</h3>
+      <p>Details about the test questions.</p>
 
-      <div className="accordion" id="accordionExample">
-        {/* Loop through sections and render an accordion for each */}
-        {Object.keys(sections).map((section, sectionIndex) => (
-          <div className="accordion-item" key={sectionIndex}>
-            <h2 className="accordion-header" id={`heading${section}`}>
-              <button
-                className="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target={`collapse${section}`}
-                aria-expanded="true"
-                aria-controls={`collapse${section}`}
-              >
-                {section} {/* Section name (Aptitude, Verbal) */}
-              </button>
-            </h2>
-            <div
-              id={`collapse${section}`}
-              className="accordion-collapse collapse"
-              aria-labelledby={`heading${section}`}
-              data-bs-parent="#accordionExample"
-            >
-              <div className="accordion-body">
-                {/* Loop through questions for this section */}
-                {sections[section].map((question, questionIndex) => (
-                  <p key={questionIndex}>Question {question.questionNumber}</p>
+      <Accordion defaultActiveKey="0">
+        {Object.entries(sections).map(([category, questions], sectionIndex) => (
+          <Accordion.Item eventKey={String(sectionIndex)} key={category}>
+            <Accordion.Header>{category} Questions</Accordion.Header>
+            <Accordion.Body>
+              <div className="question-buttons">
+                {questions.map((question, questionIndex) => (
+                  <Button
+                    key={question.questionId}
+                    className={getButtonClass(question)}
+                    onClick={() => handleQuestionClick(questionIndex)}
+                    variant="outline-dark"
+                  >
+                    {questionIndex + 1} {/* Display the question number */}
+                  </Button>
                 ))}
               </div>
-            </div>
-          </div>
+            </Accordion.Body>
+          </Accordion.Item>
         ))}
+      </Accordion>
+
+      <div className="navigation-container">
+        <Button variant="outline-dark">Submit</Button>
       </div>
-
-      {/* Submit button for the entire quiz */}
-      {!isSubmitted && (
-        <button className="btn btn-success m-2" onClick={handleSubmit}>
-          Submit
-        </button>
-      )}
-
-      {isSubmitted && <p>Thank you for submitting!</p>}
     </div>
   );
 };

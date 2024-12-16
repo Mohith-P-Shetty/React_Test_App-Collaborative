@@ -13,7 +13,7 @@ const TestDashboard = () => {
   const dispatch = useDispatch();
 
   // Fetch candidate info from global state
-  const { candidateName, candidateEmail, jobAppliedFor } = useSelector(
+  const { candidateEmail, jobAppliedFor } = useSelector(
     (state) => state.globalData
   );
   console.log(jobAppliedFor);
@@ -25,8 +25,6 @@ const TestDashboard = () => {
       fetch(`http://localhost:2000/api/questions/questions/job/${encodedValue}`)
         .then((response) => response.json()) // Parse the response as JSON
         .then((data) => {
-          console.log("Fetched questions:", data); // Log the response data
-
           if (Array.isArray(data)) {
             const questions = data.map((question) => ({
               ...question,
@@ -63,11 +61,7 @@ const TestDashboard = () => {
           </Col>
 
           <Col md={5} className="test-dashboard-info">
-            <InformationSection
-              candidateName={candidateName}
-              candidateEmail={candidateEmail}
-              jobAppliedFor={jobAppliedFor}
-            />
+            <InformationSection />
           </Col>
         </Row>
       </main>

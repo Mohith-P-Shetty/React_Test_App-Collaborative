@@ -18,7 +18,7 @@ const questionSchema = new mongoose.Schema({
     },
 
     image: {
-        // questionId: "",
+
         type: Buffer,
         // Optional field for storing image data 
     },

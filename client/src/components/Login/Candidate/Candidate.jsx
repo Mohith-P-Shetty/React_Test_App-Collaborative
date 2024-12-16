@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux"; // Import useDispatch for Redux
+import { useDispatch } from "react-redux";
 import {
   setCandidateName,
   setJobAppliedFor,
   setCandidateEmail,
-} from "../../../redux/Slices/globalDataSlice"; // Import Redux actions
+} from "../../../redux/Slices/globalDataSlice";
 import {
   Card,
   Button,
@@ -32,8 +32,30 @@ function Candidate() {
     jobAppliedFor: "",
   });
   const [alertMessage, setAlertMessage] = useState(null);
+  const [jobs, setJobs] = useState([]); // State for job options
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // Initialize useDispatch for Redux
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Fetch job titles when the component mounts
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:2000/api/questions/jobs"
+        );
+        const data = await response.json();
+        console.log(data);
+        setJobs(data); // Store the fetched jobs in state
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+        setAlertMessage("Failed to load job titles.");
+      }
+    };
+
+    if (isLogin) {
+      fetchJobs(); // Only fetch jobs when in login mode
+    }
+  }, [isLogin]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,7 +66,6 @@ function Candidate() {
     e.preventDefault();
     try {
       if (isLogin) {
-        // Login API call
         const response = await fetch("http://localhost:2000/api/users/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -56,7 +77,6 @@ function Candidate() {
         const data = await response.json();
         if (response.ok) {
           setAlertMessage("Login successful.");
-          // Dispatch Redux actions
           dispatch(setCandidateName(formData.candidateName));
           dispatch(setCandidateEmail(formData.email));
           dispatch(setJobAppliedFor(formData.jobAppliedFor));
@@ -65,7 +85,6 @@ function Candidate() {
           setAlertMessage(`Error: ${data.message}`);
         }
       } else {
-        // Registration API call
         const response = await fetch(
           "http://localhost:2000/api/users/register",
           {
@@ -76,13 +95,12 @@ function Candidate() {
         );
         const data = await response.json();
         if (response.ok) {
-          setFormData({ ...formData, payment: false }); // Set payment to false after successful registration
+          setFormData({ ...formData, payment: false });
           setAlertMessage("Registration successful.");
-          // Dispatch Redux actions
           dispatch(setCandidateName(formData.candidateName));
           dispatch(setCandidateEmail(formData.email));
           dispatch(setJobAppliedFor(formData.jobAppliedFor));
-          setIsLogin(true); // Redirect to user dashboard or home
+          setIsLogin(true);
         } else {
           alert(`Error: ${data.message}`);
         }
@@ -106,6 +124,16 @@ function Candidate() {
                   type="text"
                   name="candidateName"
                   value={formData.candidateName}
+                  onChange={handleChange}
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <FormLabel>Email</FormLabel>
+                <FormControl
+                  type="email"
+                  name="email"
+                  value={formData.email}
                   onChange={handleChange}
                   required
                 />
@@ -220,12 +248,23 @@ function Candidate() {
               <FormGroup>
                 <FormLabel>Job Applied For</FormLabel>
                 <FormControl
-                  type="text"
+                  as="select"
                   name="jobAppliedFor"
                   value={formData.jobAppliedFor}
                   onChange={handleChange}
                   required
-                />
+                >
+                  <option value="">Select a Job</option>
+                  {jobs.length > 0 ? (
+                    jobs.map((job, index) => (
+                      <option key={index} value={job}>
+                        {job}
+                      </option>
+                    ))
+                  ) : (
+                    <option>Loading jobs...</option>
+                  )}
+                </FormControl>
               </FormGroup>
             </>
           )}

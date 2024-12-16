@@ -3,7 +3,7 @@ const Question = require('../models/QuestionModel');
 // CREATE: Add a new question
 const createQuestion = async (req, res) => {
     try {
-        const { questionId, jobAppliedFor, category, question, options, correctOption, image } = req.body;
+        const { questionId, jobAppliedFor, category, question, options, correctOption } = req.body;
 
         // Create a new question document
         const questionData = new Question({
@@ -12,8 +12,7 @@ const createQuestion = async (req, res) => {
             category,
             question,
             options,
-            correctOption,
-            image: image ? Buffer.from(image, 'base64') : null // Convert base64 string to buffer if image exists
+            correctOption
         });
 
         await questionData.save();
@@ -28,7 +27,7 @@ const createQuestion = async (req, res) => {
 const editQuestion = async (req, res) => {
     try {
         const { questionId } = req.params;
-        const { jobAppliedFor, category, question, options, correctOption, image } = req.body;
+        const { jobAppliedFor, category, question, options, correctOption } = req.body;
 
         const updatedQuestion = await Question.findOneAndUpdate(
             { questionId },
@@ -37,8 +36,7 @@ const editQuestion = async (req, res) => {
                 category,
                 question,
                 options,
-                correctOption,
-                image: image ? Buffer.from(image, 'base64') : null // Update image if provided
+                correctOption
             },
             { new: true }
         );
@@ -117,11 +115,28 @@ const getAllQuestions = async (req, res) => {
     }
 };
 
+const getDistinctJobPositions = async (req, res) => {
+    try {
+        // Fetch distinct job positions from the 'jobAppliedFor' field in the Question collection
+        const jobPositions = await Question.distinct("jobAppliedFor");
+
+        if (!jobPositions || jobPositions.length === 0) {
+            return res.status(404).json({ message: "No job positions found" });
+        }
+
+        res.status(200).json(jobPositions);
+    } catch (error) {
+        console.error("Error retrieving job positions:", error);
+        res.status(500).json({ message: "Error retrieving job positions", error });
+    }
+};
+
 module.exports = {
     createQuestion,
     editQuestion,
     deleteQuestion,
     getQuestionByCategory,
     getQuestionByJob,
-    getAllQuestions
+    getAllQuestions,
+    getDistinctJobPositions
 };

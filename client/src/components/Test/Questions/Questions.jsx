@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrentQuestion } from "../../../redux/Slices/testMetaDataSlice"; // Import the action
-// import { useEffect } from "react";
+import {
+  setCurrentQuestion,
+  selectOption,
+} from "../../../redux/Slices/testMetaDataSlice"; // Import actions
 
 const Questions = () => {
   const dispatch = useDispatch();
@@ -27,6 +29,17 @@ const Questions = () => {
     }
   };
 
+  // Handle option selection
+  const handleOptionSelect = (selectedOption) => {
+    // Dispatch the selectOption action to update the selected option in the Redux store
+    dispatch(
+      selectOption({
+        questionId: currentQuestionData.questionId,
+        selectedOption,
+      })
+    );
+  };
+
   // If no questions are loaded, display a loading message
   if (!currentQuestionData) {
     return <div>Loading...</div>;
@@ -48,7 +61,8 @@ const Questions = () => {
             id={option}
             name="option"
             value={option}
-            // Handle selection logic if needed (e.g., storing the selected option in Redux)
+            checked={currentQuestionData.selectedOption === option} // Check if this option is selected
+            onChange={() => handleOptionSelect(option)} // Handle the selection of an option
           />
           <label htmlFor={option}>{option}</label>
         </div>

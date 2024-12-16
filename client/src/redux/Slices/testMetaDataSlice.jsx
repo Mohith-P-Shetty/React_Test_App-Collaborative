@@ -4,7 +4,7 @@ const initialState = {
   candidateEmail: null, // Store the current candidate's email
   isSubmitted: false, // Flag to track if the test is submitted
   questions: [
-    // Example question structure based on your schema:
+    // Example question structure
     // {
     //   questionId: "1",
     //   jobAppliedFor: "Software Engineer",
@@ -36,7 +36,7 @@ const testMetaDataSlice = createSlice({
     // Action to update the selected option for a specific question
     selectOption: (state, action) => {
       const { questionId, selectedOption } = action.payload;
-      const question = state.questions.find((q) => q.id === questionId);
+      const question = state.questions.find((q) => q.questionId === questionId);
       if (question) {
         question.selectedOption = selectedOption;
 
@@ -69,7 +69,6 @@ const testMetaDataSlice = createSlice({
       }));
       state.isSubmitted = false;
       state.currentQuestion = 0; // Reset the current question to the first question
-      state.totalPoints = 0; // Reset the total points
     },
   },
 });
