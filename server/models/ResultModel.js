@@ -6,11 +6,11 @@ const resultSchema = new mongoose.Schema({
         required: true,
         unique: true,                                           // Ensure result ID is unique
     },
-    userid: {
+    candidateName: {
         type: String,
         required: true,
     },
-    testid: {
+    jobAppliedFor: {
         type: String,
         required: true,
     },

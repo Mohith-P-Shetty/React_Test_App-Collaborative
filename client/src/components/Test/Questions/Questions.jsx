@@ -12,8 +12,20 @@ const Questions = () => {
     (state) => state.testMetaData
   );
 
-  // Get the current question object from the questions array using the currentQuestion index
-  const currentQuestionData = questions[currentQuestion];
+  // Group questions by category
+  const groupedQuestions = questions.reduce((acc, question) => {
+    if (!acc[question.category]) {
+      acc[question.category] = [];
+    }
+    acc[question.category].push(question);
+    return acc;
+  }, {});
+
+  // Flatten grouped questions for sequential navigation
+  const flattenedQuestions = Object.values(groupedQuestions).flat();
+
+  // Get the current question object using the flattened index
+  const currentQuestionData = flattenedQuestions[currentQuestion];
 
   // Handle "Previous" button click
   const handlePrevious = () => {
@@ -24,7 +36,7 @@ const Questions = () => {
 
   // Handle "Next" button click
   const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
+    if (currentQuestion < flattenedQuestions.length - 1) {
       dispatch(setCurrentQuestion(currentQuestion + 1)); // Update the current question index in Redux
     }
   };
@@ -80,7 +92,7 @@ const Questions = () => {
         <button
           className="btn btn-secondary m-2"
           onClick={handleNext}
-          disabled={currentQuestion === questions.length - 1}
+          disabled={currentQuestion === flattenedQuestions.length - 1}
         >
           Next
         </button>

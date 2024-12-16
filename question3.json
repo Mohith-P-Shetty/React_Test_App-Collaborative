@@ -1,0 +1,118 @@
+[
+    {
+      "_id": 31,
+      "questionId": "Q031",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Coding",
+      "question": "Which Python library is used for data manipulation and analysis?",
+      "options": ["NumPy", "Pandas", "Matplotlib", "SciPy"],
+      "correctOption": "Pandas",
+      "status": "PUBLISH"
+    },
+    {
+      "_id": 32,
+      "questionId": "Q032",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Coding",
+      "question": "What is the command to view the first few rows of a DataFrame in Pandas?",
+      "options": [".head()", ".tail()", ".info()", ".describe()"],
+      "correctOption": ".head()",
+      "status": "PUBLISH"
+    },
+    {
+      "_id": 33,
+      "questionId": "Q033",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Math",
+      "question": "What is the integral of sin(x)?",
+      "options": ["-cos(x)", "cos(x)", "-sin(x)", "tan(x)"],
+      "correctOption": "-cos(x)",
+      "status": "PUBLISH"
+    },
+    {
+      "_id": 34,
+      "questionId": "Q034",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Math",
+      "question": "What is the result of the dot product of two orthogonal vectors?",
+      "options": ["1", "0", "Infinity", "Undefined"],
+      "correctOption": "0",
+      "status": "PUBLISH"
+    },
+    {
+      "_id": 35,
+      "questionId": "Q035",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Analytical",
+      "question": "What does the term 'precision' refer to in a classification model?",
+      "options": [
+        "Ratio of true positives to predicted positives",
+        "Ratio of true positives to all actual positives",
+        "Ratio of false negatives to predicted negatives",
+        "Ratio of true negatives to all predictions"
+      ],
+      "correctOption": "Ratio of true positives to predicted positives",
+      "status": "PUBLISH"
+    },
+    {
+      "_id": 36,
+      "questionId": "Q036",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Analytical",
+      "question": "Which of the following is NOT a type of machine learning?",
+      "options": [
+        "Supervised Learning",
+        "Unsupervised Learning",
+        "Reinforcement Learning",
+        "Programming Learning"
+      ],
+      "correctOption": "Programming Learning",
+      "status": "PUBLISH"
+    },
+    {
+      "_id": 37,
+      "questionId": "Q037",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Logical",
+      "question": "In a decision tree, what is the term used for the process of splitting data?",
+      "options": ["Branching", "Pruning", "Splitting", "Rooting"],
+      "correctOption": "Splitting",
+      "status": "PUBLISH"
+    },
+    {
+      "_id": 38,
+      "questionId": "Q038",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Logical",
+      "question": "Which of the following describes overfitting in a machine learning model?",
+      "options": [
+        "The model performs well on training data but poorly on unseen data.",
+        "The model performs poorly on both training and testing data.",
+        "The model generalizes well across all datasets.",
+        "The model has fewer parameters than required."
+      ],
+      "correctOption": "The model performs well on training data but poorly on unseen data.",
+      "status": "PUBLISH"
+    },
+    {
+      "_id": 39,
+      "questionId": "Q039",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Logical",
+      "question": "What is the term for a machine learning model that performs consistently across different datasets?",
+      "options": ["Overfitting", "Bias", "Robustness", "Underfitting"],
+      "correctOption": "Robustness",
+      "status": "PUBLISH"
+    },
+    {
+      "_id": 40,
+      "questionId": "Q040",
+      "jobAppliedFor": "Data Scientist",
+      "category": "Coding",
+      "question": "Which library in Python is used for creating machine learning models?",
+      "options": ["Matplotlib", "Scikit-learn", "Seaborn", "Bokeh"],
+      "correctOption": "Scikit-learn",
+      "status": "PUBLISH"
+    }
+  ]
+  

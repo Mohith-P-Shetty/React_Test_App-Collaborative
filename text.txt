@@ -1,4 +1,47 @@
-const Result = require("../models/ResultModel"); // Adjust the path to your model as needed
+const mongoose = require("mongoose");
+
+const resultSchema = new mongoose.Schema({
+    resultid: {
+        type: String,
+        required: true,
+        unique: true,                                           // Ensure result ID is unique
+    },
+    candidateName: {
+        type: String,
+        required: true,
+    },
+    jobAppliedFor: {
+        type: String,
+        required: true,
+    },
+    date: {
+        type: String,                                           // Store date as a string in YYYY-MM-DD format
+        required: true,
+    },
+    answers: [
+        {
+            questionId: { type: String, required: true },       // Question ID
+            category: { type: String, required: true },         // (e.g., Analytical, Logical, etc.)
+            correctOption: { type: String, default: null },     // Correct option as a string
+            selectedOption: { type: String, default: null },    // Selected option as a string
+            timeTaken: { type: Number, default: 0 },            // Time taken to answer (in seconds or milliseconds)
+            point: { type: Number, default: 0 },                // Points for this answer           
+        },
+    ],
+    score: {
+        type: Number,
+        default: 0, // Default score is 0
+    },
+});   
+
+const Result = mongoose.model("Result", resultSchema);
+
+module.exports = Result;
+
+
+const Result = mongoose.model("Result", resultSchema);
+
+module.exports = Result;  this is the result schemaconst Result = require("../models/ResultModel"); // Adjust the path to your model as needed
 
 // Controller function to add a result
 const addResult = async (req, res) => {
@@ -78,3 +121,4 @@ const getResultById = async (req, res) => {
 
 module.exports = { addResult, getResults, getResultById };
 
+this are the controllers  so i thought when we submit the test result  by clicking lets have a state to hold all the values (from testMetaData slicle for each question ,option, correct option selected visited and points  also calculate the totalscore , date is current date,time taken 0 for now also the candidate name and job applied for will be taken by globalData Slice) in information section 

@@ -10,3 +10,4 @@ router.post("/getResult", getResults);
 router.post("/getResultById", getResultById);
 
 module.exports = router;
+  
