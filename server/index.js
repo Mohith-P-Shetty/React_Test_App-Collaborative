@@ -5,6 +5,8 @@ const connectDB = require('./config/db');
 
 const UserRoutes = require('./routes/UserRoute')
 const ResultRoutes = require('./routes/ResultRoute')
+const AdminRoutes = require('./routes/AdminRoute')
+const QuestionRoutes = require('./routes/QuestionRoute')
 
 dotenv.config();
 
@@ -29,6 +31,8 @@ app.get('/', (req, res) => {
 // Use test routes
 app.use('/api/users', UserRoutes);
 app.use('/api/results', ResultRoutes);
+app.use('/api/admins', AdminRoutes);
+app.use('/api/questions', QuestionRoutes);
 
 
 // Start server

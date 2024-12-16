@@ -1,0 +1,220 @@
+[
+    {
+      "id": 1,
+      "jobAppliedFor": "Developer",
+      "category": "Frontend Development",
+      "question": "Which HTML tag is used to define an internal style sheet?",
+      "options": ["<style>", "<script>", "<css>", "<link>"],
+      "image": "",
+      "correctOption": "<style>"
+    },
+    {
+      "id": 2,
+      "jobAppliedFor": "Developer",
+      "category": "Frontend Development",
+      "question": "What is the correct syntax for referring to an external script called 'app.js'?",
+      "options": [
+        "<script src='app.js'>",
+        "<script href='app.js'>",
+        "<script ref='app.js'>",
+        "<script name='app.js'>"
+      ],
+      "image": "",
+      "correctOption": "<script src='app.js'>"
+    },
+    {
+      "id": 3,
+      "jobAppliedFor": "Developer",
+      "category": "Frontend Development",
+      "question": "Which CSS property is used to change text color?",
+      "options": ["color", "text-color", "font-color", "style-color"],
+      "image": "",
+      "correctOption": "color"
+    },
+    {
+      "id": 4,
+      "jobAppliedFor": "Developer",
+      "category": "Backend Development",
+      "question": "Which of the following is a NoSQL database?",
+      "options": ["MySQL", "PostgreSQL", "MongoDB", "OracleDB"],
+      "image": "",
+      "correctOption": "MongoDB"
+    },
+    {
+      "id": 5,
+      "jobAppliedFor": "Developer",
+      "category": "Backend Development",
+      "question": "What does REST stand for in RESTful APIs?",
+      "options": [
+        "Representational State Transfer",
+        "Recursive Service Transfer",
+        "Remote Execution Services",
+        "Resource Service Tool"
+      ],
+      "image": "",
+      "correctOption": "Representational State Transfer"
+    },
+    {
+      "id": 6,
+      "jobAppliedFor": "Developer",
+      "category": "Backend Development",
+      "question": "Which HTTP method is used to create a resource?",
+      "options": ["GET", "POST", "PUT", "DELETE"],
+      "image": "",
+      "correctOption": "POST"
+    },
+    {
+      "id": 7,
+      "jobAppliedFor": "Designer",
+      "category": "UI Design",
+      "question": "What does UI stand for?",
+      "options": [
+        "User Interface",
+        "Universal Integration",
+        "Unified Interaction",
+        "User Input"
+      ],
+      "image": "",
+      "correctOption": "User Interface"
+    },
+    {
+      "id": 8,
+      "jobAppliedFor": "Designer",
+      "category": "UI Design",
+      "question": "Which of the following tools is commonly used for UI design?",
+      "options": ["Figma", "Git", "Node.js", "PyCharm"],
+      "image": "",
+      "correctOption": "Figma"
+    },
+    {
+      "id": 9,
+      "jobAppliedFor": "Designer",
+      "category": "UI Design",
+      "question": "What is the main purpose of a wireframe?",
+      "options": [
+        "Create functional prototypes",
+        "Test backend features",
+        "Define layout and structure",
+        "Add animations"
+      ],
+      "image": "",
+      "correctOption": "Define layout and structure"
+    },
+    {
+      "id": 10,
+      "jobAppliedFor": "Designer",
+      "category": "Graphic Design",
+      "question": "Which of the following is a vector graphic format?",
+      "options": ["JPEG", "PNG", "SVG", "GIF"],
+      "image": "",
+      "correctOption": "SVG"
+    },
+    {
+      "id": 11,
+      "jobAppliedFor": "Designer",
+      "category": "Graphic Design",
+      "question": "What is the primary use of Adobe Illustrator?",
+      "options": [
+        "Photo editing",
+        "Vector graphic design",
+        "3D modeling",
+        "Video editing"
+      ],
+      "image": "",
+      "correctOption": "Vector graphic design"
+    },
+    {
+      "id": 12,
+      "jobAppliedFor": "Designer",
+      "category": "Graphic Design",
+      "question": "Which term refers to the arrangement of text in design?",
+      "options": ["Typography", "Kerning", "Alignment", "Style"],
+      "image": "",
+      "correctOption": "Typography"
+    },
+    {
+      "id": 13,
+      "jobAppliedFor": "HR",
+      "category": "Recruitment",
+      "question": "What is the primary goal of recruitment?",
+      "options": [
+        "Filling vacancies",
+        "Training employees",
+        "Resolving conflicts",
+        "Evaluating team performance"
+      ],
+      "image": "",
+      "correctOption": "Filling vacancies"
+    },
+    {
+      "id": 14,
+      "jobAppliedFor": "HR",
+      "category": "Recruitment",
+      "question": "What does ATS stand for in recruitment?",
+      "options": [
+        "Applicant Tracking System",
+        "Application Testing Suite",
+        "Automated Tracking Software",
+        "Application Transfer System"
+      ],
+      "image": "",
+      "correctOption": "Applicant Tracking System"
+    },
+    {
+      "id": 15,
+      "jobAppliedFor": "HR",
+      "category": "Recruitment",
+      "question": "Which of the following is a common recruitment channel?",
+      "options": [
+        "Internal referrals",
+        "Performance reviews",
+        "Exit interviews",
+        "Employee surveys"
+      ],
+      "image": "",
+      "correctOption": "Internal referrals"
+    },
+    {
+      "id": 16,
+      "jobAppliedFor": "HR",
+      "category": "Policy",
+      "question": "Which document outlines workplace rules?",
+      "options": [
+        "Employee Handbook",
+        "Business Plan",
+        "Project Proposal",
+        "Marketing Report"
+      ],
+      "image": "",
+      "correctOption": "Employee Handbook"
+    },
+    {
+      "id": 17,
+      "jobAppliedFor": "HR",
+      "category": "Policy",
+      "question": "What is the purpose of an anti-harassment policy?",
+      "options": [
+        "Encourage collaboration",
+        "Ensure employee safety",
+        "Increase productivity",
+        "Boost revenue"
+      ],
+      "image": "",
+      "correctOption": "Ensure employee safety"
+    },
+    {
+      "id": 18,
+      "jobAppliedFor": "HR",
+      "category": "Policy",
+      "question": "Which act governs employee rights in the workplace?",
+      "options": [
+        "Fair Labor Standards Act",
+        "Civil Rights Act",
+        "Data Privacy Act",
+        "Workplace Health Act"
+      ],
+      "image": "",
+      "correctOption": "Fair Labor Standards Act"
+    }
+  ]
+  

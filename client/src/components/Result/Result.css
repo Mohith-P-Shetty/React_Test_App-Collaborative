@@ -1,0 +1,55 @@
+.result-container {
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-row {
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.candidate-info-row {
+  display: flex;
+  align-items: left;
+  padding: 20px;
+}
+
+.candidate-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.chart-container {
+  max-height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.result-table-row {
+  padding: 20px;
+}
+
+.result-table-container {
+  max-height: 70%;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .candidate-info-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .chart-container {
+    margin-top: 20px;
+  }
+}

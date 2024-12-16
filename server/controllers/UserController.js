@@ -5,7 +5,7 @@ module.exports = {
     // Registration handler (includes all fields except jobAppliedFor)
     async register(req, res) {
         try {
-            const { candidateName, gender, email, contactNo, source, qualifications, stream, yearOfPassing, collegename, referralcode, resume } = req.body;
+            const { candidateName, gender, email, contactNo, source, qualifications, stream, yearOfPassing, collegename, referralcode } = req.body;
 
             // Check if the email already exists
             const existingUser = await User.findOne({ email });
@@ -25,7 +25,7 @@ module.exports = {
                 yearOfPassing,
                 collegename,
                 referralcode,
-                resume,
+                // resume,
             });
 
             // Save the user to the database

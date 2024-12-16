@@ -1,0 +1,48 @@
+/* Main container to ensure full height and width */
+.test-dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header styling */
+.test-dashboard-header {
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Main content area styling */
+.test-dashboard-main {
+  flex-grow: 1;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Row to handle the columns layout */
+.test-dashboard-row {
+  height: 100%;
+}
+
+/* Column for questions section */
+.test-dashboard-questions {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* Column for the information section */
+.test-dashboard-info {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* Footer styling */
+.test-dashboard-footer {
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+/* Ensure responsive behavior */
+@media (max-width: 768px) {
+  .test-dashboard-row {
+    flex-direction: column;
+  }
+}
