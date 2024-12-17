@@ -1,6 +1,7 @@
 /* Main container to ensure full height and width */
 .test-dashboard-container {
   height: 100vh;
+
   display: flex;
   flex-direction: column;
 }
@@ -26,13 +27,15 @@
 /* Column for questions section */
 .test-dashboard-questions {
   display: flex;
-  flex-grow: 1;
+  flex: 9 !important;
 }
 
 /* Column for the information section */
 .test-dashboard-info {
   display: flex;
-  flex-grow: 1;
+
+  justify-content: center;
+  flex: 3 !important;
 }
 
 /* Footer styling */

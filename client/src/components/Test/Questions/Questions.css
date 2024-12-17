@@ -1,0 +1,42 @@
+.question-wrapper {
+  width: 100%;
+  padding: 1rem;
+  padding-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  h3 {
+    flex: 1;
+  }
+}
+.question-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 10;
+  p {
+    font-size: 24px;
+  }
+}
+.nav-buttons {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+.options {
+  width: 90%;
+  padding-left: 3px;
+  .form-check {
+    display: flex;
+    width: 85%;
+    height: 50px;
+    .form-check-input {
+      border: 1px solid black;
+    }
+    label {
+      margin-left: 10px;
+      display: flex;
+      width: 100%;
+    }
+  }
+}

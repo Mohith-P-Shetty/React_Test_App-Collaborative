@@ -1,71 +1,75 @@
+// InformationSection.jsx
 import { useSelector, useDispatch } from "react-redux";
-import { Accordion, Button } from "react-bootstrap";
+import { Accordion, Button, ProgressBar } from "react-bootstrap";
 import { setCurrentQuestion } from "../../../redux/Slices/testMetaDataSlice";
+import { useState, useEffect } from "react";
 import "./InformationSection.css";
 
 const InformationSection = () => {
   const dispatch = useDispatch();
+
   const { questions, currentQuestion } = useSelector(
     (state) => state.testMetaData
   );
 
-  // Group questions by category while preserving their original indices
-  const sections = questions.reduce((acc, question, index) => {
+  const sections = questions.reduce((acc, question) => {
     if (!acc[question.category]) {
       acc[question.category] = [];
     }
-    acc[question.category].push({ ...question, originalIndex: index });
+    acc[question.category].push(question);
     return acc;
   }, {});
 
-  // Flatten grouped questions to simplify navigation logic
-  const flattenedQuestions = Object.values(sections).flat();
+  const [timeLeft, setTimeLeft] = useState(360); // 6 minutes in seconds
 
-  // Handle button click to set the current question
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => Math.max(prev - 1, 0));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   const handleQuestionClick = (questionIndex) => {
     dispatch(setCurrentQuestion(questionIndex));
   };
 
-  // Determine button styles based on question state
-  const getButtonStyles = (question, isCurrent) => {
-    if (isCurrent) {
-      return { backgroundColor: "red", color: "white", borderColor: "red" };
-    }
-    if (question.selectedOption) {
-      return { backgroundColor: "white", color: "black", borderColor: "green" };
-    }
-    if (question.visited) {
-      return { backgroundColor: "white", color: "black", borderColor: "red" };
-    }
-    return { backgroundColor: "white", color: "black", borderColor: "black" };
-  };
+  const progressPercentage = ((360 - timeLeft) / 360) * 100;
 
   return (
     <div className="information-section">
-      <h3>Question Information</h3>
-      <p>Select a question to view or answer it.</p>
+      <h3>Time remaining</h3>
+      <p>{`${Math.floor(timeLeft / 60)}:${timeLeft % 60}`}</p>
+      <ProgressBar className="progressbar" now={progressPercentage} />
 
-      <Accordion defaultActiveKey="0">
+      <Accordion className="accordion" defaultActiveKey="0">
         {Object.entries(sections).map(
           ([category, categoryQuestions], sectionIndex) => (
             <Accordion.Item eventKey={String(sectionIndex)} key={category}>
               <Accordion.Header>{category} Questions</Accordion.Header>
               <Accordion.Body>
                 <div className="question-buttons">
-                  {categoryQuestions.map((question) => {
+                  {categoryQuestions.map((question, index) => {
                     const isCurrent =
-                      flattenedQuestions[currentQuestion].originalIndex ===
-                      question.originalIndex;
+                      questions[currentQuestion].questionId ===
+                      question.questionId;
                     return (
                       <Button
                         key={question.questionId}
                         className="question-button"
                         onClick={() =>
-                          handleQuestionClick(question.originalIndex)
+                          handleQuestionClick(
+                            questions.findIndex(
+                              (q) => q.questionId === question.questionId
+                            )
+                          )
                         }
-                        style={getButtonStyles(question, isCurrent)}
+                        style={{
+                          color: "black",
+                          backgroundColor: isCurrent ? "red" : "white",
+                          borderColor: "black",
+                        }}
                       >
-                        {question.originalIndex + 1}
+                        {index + 1}
                       </Button>
                     );
                   })}
@@ -75,15 +79,14 @@ const InformationSection = () => {
           )
         )}
       </Accordion>
-
-      <div className="navigation-container">
-        <Button
-          variant="outline-dark"
-          onClick={() => console.log("Submit Test")}
-        >
-          Submit
-        </Button>
-      </div>
+      <Button
+        className="submit-button
+      "
+        variant="outline-dark"
+        onClick={() => console.log("Submit Test")}
+      >
+        Submit
+      </Button>
     </div>
   );
 };

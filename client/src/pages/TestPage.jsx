@@ -2,7 +2,7 @@ import TestDashboard from "../components/Test/TestDashboard";
 
 function TestPage() {
   return (
-    <div>
+    <div className="testpage-wrapper">
       <TestDashboard />
     </div>
   );
