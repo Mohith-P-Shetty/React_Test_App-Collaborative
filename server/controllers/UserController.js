@@ -66,4 +66,17 @@ module.exports = {
             return res.status(500).json({ message: 'Server error, please try again later.' });
         }
     },
+    // Fetch all registered users
+    async getAllUsers(req, res) {
+        try {
+            // Get all users from the database
+            const users = await User.find();
+
+            // Return the list of users
+            return res.status(200).json({ users });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: 'Server error, please try again later.' });
+        }
+    }
 };

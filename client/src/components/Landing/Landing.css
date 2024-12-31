@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Agu+Display&family=Audiowide&family=Bree+Serif&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Faculty+Glyphic&family=Itim&family=Jaro:opsz@6..72&family=Kosugi+Maru&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Play:wght@400;700&family=Rubik+Vinyl&family=Rubik:ital,wght@0,300..900;1,300..900&family=Special+Elite&display=swap");
+
+/* Wrapper styles */
+.Cls_div_landing_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa; /* Light background for contrast */
+  /* overflow: scroll;
+    position: absolute; */
+}
+.bg {
+  background-image: url("../../assets/landing/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.Cls_container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.Cls_MainCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
+/* Main Card styles */
+.Cls_div_landing_wrapper .card {
+  width: 100%;
+  background-color: transparent !important; /* Fully transparent */
+  border: none; /* Remove border */
+  box-shadow: none; /* Remove shadow */
+}
+
+/* Header styles */
+.Cls_div_landing_wrapper .card-header {
+  text-align: center;
+  background-color: transparent; /* Transparent header */
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: none; /* Remove bottom border */
+}
+
+/* Inner cards */
+.Cls_div_landing_wrapper .card-body .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  cursor: pointer;
+}
+
+.Cls_div_landing_wrapper .card-body .card:hover {
+  transform: scale(1.05); /* Slight scaling on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Images inside cards */
+.Cls_div_landing_wrapper .card-body .card .card-img-top {
+  transition: transform 0.3s ease; /* Smooth zoom transition for images */
+}
+
+.Cls_div_landing_wrapper .card-body .card:hover .card-img-top {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Text alignment for inner card headers */
+.Cls_div_landing_wrapper .card-body .card-header {
+  text-align: center;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: none; /* Remove bottom border */
+}
+
+/* Flex container for the card header */
+.Cls_card_header {
+  display: flex;
+  justify-content: space-between; /* Space out content */
+  align-items: center; /* Center content vertically */
+  background-color: transparent;
+  padding: 10px;
+  border-bottom: none; /* Remove default border */
+}
+
+/* Logo styles */
+.Cls_logo {
+  flex: 1; /* Take 1 part of the available space */
+  max-width: 100px; /* Restrict the width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Heading styles */
+.Cls_heading {
+  flex: 11; /* Take 11 parts of the available space */
+  font-size: 1.5rem; /* Adjust font size */
+  font-weight: bold;
+  text-align: center; /* Center align the text */
+  margin: 0; /* Remove default margin */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .Cls_card_header {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center all content */
+  }
+
+  .Cls_logo {
+    margin-bottom: 10px; /* Add spacing below logo */
+  }
+
+  .Cls_heading {
+    text-align: center; /* Center align text */
+  }
+}
+
+.kosugi-maru-regular {
+  font-family: "Kosugi Maru", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-cardsname {
+  font-family: "Rubik", serif;
+  font-optical-sizing: auto;
+  font-size: 50px;
+  font-weight: 400;
+  font-style: normal;
+}

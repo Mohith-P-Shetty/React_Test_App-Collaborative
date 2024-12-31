@@ -59,16 +59,21 @@ const getResults = async (req, res) => {
 // Fetch a single result by resultid
 const getResultById = async (req, res) => {
     try {
-        const { result_id } = req.params;
-        console.log(result_id);
-        const result = await Result.findOne({ result_id });
+        console.log(req.params);
+        const { resultId } = req.params;
+        console.log(resultId);
+        const resultid = encodeURIComponent(resultId);
+        console.log(resultid);
+        // Find result by resultId
+        const result = await Result.findOne({ resultid });
         if (!result) {
             return res.status(404).json({ message: "Result not found" });
         }
 
         res.status(200).json(result);
     } catch (error) {
-        res.status(500).json({ message: "Error fetching result", error: error.message });
+        console.error("Error fetching result:", error);
+        res.status(500).json({ message: "Error fetching result.", error: error.message });
     }
 };
 

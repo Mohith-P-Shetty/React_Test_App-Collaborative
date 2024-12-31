@@ -1,14 +1,7 @@
-/* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Line } from "react-chartjs-2";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Table,
-  Form,
-} from "react-bootstrap";
+import { Container, Row, Col, Card, Table, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Chart as ChartJS,
@@ -21,9 +14,18 @@ import {
   Legend,
 } from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const AdminDashboard = () => {
+  const [totalRegistered, setTotalRegistered] = useState(0);
   // Dummy data for total attendees over the last 7 days
   const attendeesData = {
     labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
@@ -39,27 +41,38 @@ const AdminDashboard = () => {
   };
 
   // Dummy data for attendees list
-  const [attendees, setAttendees] = useState([
-    { name: "John Doe", email: "john@example.com" },
-    { name: "Jane Smith", email: "jane@example.com" },
-    { name: "Sam Wilson", email: "sam@example.com" },
-    { name: "Emily Davis", email: "emily@example.com" },
-    { name: "Michael Brown", email: "michael@example.com" },
-  ]);
+  const [attendees, setAttendees] = useState([]);
 
   // Search state
   const [searchTerm, setSearchTerm] = useState("");
+  useEffect(() => {
+    // Fetch all attendees (users)
+    const fetchAttendees = async () => {
+      try {
+        const response = await axios.get("http://localhost:2000/api/users"); // Make sure this matches your API endpoint
+        setTotalRegistered(response.data.users.length);
+        setAttendees(response.data.users); // Set the attendees data from response
+      } catch (error) {
+        console.error("Error fetching attendees:", error);
+      }
+    };
 
-  // Filtered attendees based on search
-  const filteredAttendees = attendees.filter((attendee) =>
-    attendee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    attendee.email.toLowerCase().includes(searchTerm.toLowerCase())
+    fetchAttendees(); // Call the function to fetch the data
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
+
+  // Filtered attendees based on search term
+  const filteredAttendees = attendees.filter(
+    (attendee) =>
+      attendee.candidateName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      attendee.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <Container className="Cls_Container_AdminDashboard mt-4">
       {/* Title */}
-      <h1 className="Cls_H1_Title text-center mb-4 fw-light">ADMIN DASHBOARD</h1>
+      <h1 className="Cls_H1_Title text-center mb-4 fw-light">
+        ADMIN DASHBOARD
+      </h1>
 
       {/* Top row */}
       <Row className="Cls_Row_TopRow mb-4">
@@ -83,7 +96,7 @@ const AdminDashboard = () => {
                 Total Number of Registered
               </Card.Title>
               <Card.Text className="Cls_CardText_TotalRegistered display-4 fw-light">
-                200 {/* Replace 200 with dynamic data */}
+                {totalRegistered}
               </Card.Text>
             </Card.Body>
           </Card>
@@ -130,7 +143,7 @@ const AdminDashboard = () => {
               {filteredAttendees.length > 0 ? (
                 filteredAttendees.map((attendee, index) => (
                   <tr key={index} className="Cls_Tr_AttendeeRow">
-                    <td className="Cls_Td_Name">{attendee.name}</td>
+                    <td className="Cls_Td_Name">{attendee.candidateName}</td>
                     <td className="Cls_Td_Email">{attendee.email}</td>
                   </tr>
                 ))

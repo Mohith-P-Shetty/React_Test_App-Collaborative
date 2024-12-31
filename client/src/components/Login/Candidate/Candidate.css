@@ -1,0 +1,127 @@
+/* General container styles */
+#welcome {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd, #90caf9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Styling the form container */
+.login-form-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Form element styling */
+.custom-form .custom-input,
+.custom-form .custom-select {
+  border: none;
+  border-bottom: 2px solid #ced4da;
+  border-radius: 0;
+  padding: 10px;
+  transition: border-color 0.3s ease;
+  position: relative;
+}
+
+.custom-form .custom-input:focus,
+.custom-form .custom-select:focus {
+  outline: none;
+  border-bottom: 2px solid #2196f3;
+}
+
+.custom-form .custom-input:hover,
+.custom-form .custom-select:hover {
+  border-bottom: 2px solid #90caf9;
+}
+
+/* Moving line animation */
+.custom-form .custom-input:focus ~ .line,
+.custom-form .custom-select:focus ~ .line {
+  width: 100%;
+  left: 0;
+}
+
+.custom-form .custom-input:hover ~ .line,
+.custom-form .custom-select:hover ~ .line {
+  background-color: #90caf9;
+}
+
+.line {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #2196f3;
+  transition: all 0.3s ease;
+}
+
+/* Button styling */
+.custom-button {
+  background-color: #2196f3;
+  border: none;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-button:hover {
+  background-color: #1769aa;
+  transform: translateY(-2px);
+}
+
+.custom-button:active {
+  transform: translateY(0);
+}
+
+/* Registration Link */
+.text-center p {
+  font-size: 14px;
+  color: #1769aa;
+}
+
+.text-center p a {
+  text-decoration: none;
+  color: #1769aa;
+  font-weight: bold;
+}
+
+.text-center p a:hover {
+  text-decoration: underline;
+}
+
+/* SVG Animation styles */
+.background-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-form-container {
+    padding: 20px;
+  }
+
+  .custom-form .custom-input,
+  .custom-form .custom-select {
+    padding: 8px;
+  }
+
+  .custom-button {
+    font-size: 14px;
+  }
+}

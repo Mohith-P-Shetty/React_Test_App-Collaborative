@@ -19,8 +19,8 @@ const resultSchema = new mongoose.Schema({
         required: true,
     },
     date: {
-        type: String,                                           // Store date as a string in YYYY-MM-DD format
-        required: true, default: Date.now
+        type: Date,                                           // Store date as a string in YYYY-MM-DD format
+        default: Date.now
     },
     answers: [
         {

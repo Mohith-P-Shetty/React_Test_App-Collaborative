@@ -1,0 +1,59 @@
+.Container {
+  width: 100vh;
+}
+
+.Cls_Card_AdminloginCard {
+  background-image: url("../../../assets/login/adminlogin.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Transparent Card */
+.admin-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent white */
+  border: none; /* Remove border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover Effect */
+.admin-card:hover {
+  transform: scale(1.05); /* Slightly increase the size */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a deeper shadow */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* Slightly more opaque on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .admin-card {
+    transform: none; /* Disable scaling for small screens */
+    box-shadow: none;
+  }
+}
+
+/* .Cls_card_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px;
+    border-bottom: none; 
+  }
+  
+  
+  .Cls_logo {
+    flex: 1;
+    max-width: 100px;
+    height: auto; 
+  } */

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux"; // For accessing Redux state
 import ResultChart from "./ResultChart/ResultChart";
 import "./Result.css";
-import axios from "axios";
 
 function Result() {
   const navigate = useNavigate();
@@ -12,7 +11,9 @@ function Result() {
     (state) => state.globalData
   );
   const encodedValue = `${candidateEmail}_${jobAppliedFor}`;
-  const resultId = encodeURIComponent(encodedValue);
+  const resultid = encodeURIComponent(encodedValue);
+  console.log(resultid);
+
   const [resultData, setResultData] = useState([]);
   const [candidateInfo, setCandidateInfo] = useState({
     name: "",
@@ -28,14 +29,21 @@ function Result() {
 
   useEffect(() => {
     const fetchResult = async () => {
-      if (!resultId) return; // Ensure resultid is available
+      if (!resultid) return; // Ensure resultId is available
 
       try {
-        // Use GET method with resultId as a parameter
-        const response = await axios.get(
-          `http://localhost:2000/api/results/${resultId}`
+        // Use fetch method to get result data
+        const response = await fetch(
+          `http://localhost:2000/api/results/${resultid}`
         );
-        const data = response.data;
+
+        // Check if the response is successful (status 200-299)
+        if (!response.ok) {
+          throw new Error(`Error fetching result: ${response.statusText}`);
+        }
+
+        // Convert response to JSON
+        const data = await response.json();
 
         // Set candidate info
         setCandidateInfo({
@@ -91,7 +99,7 @@ function Result() {
     };
 
     fetchResult();
-  }, [resultId]);
+  }, [resultid]);
 
   const getCategoryColor = (category) => {
     const colors = {
