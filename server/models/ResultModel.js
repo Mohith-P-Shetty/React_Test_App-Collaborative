@@ -10,13 +10,17 @@ const resultSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    candidateEmail: {
+        type: String,
+        required: true,
+    },
     jobAppliedFor: {
         type: String,
         required: true,
     },
     date: {
         type: String,                                           // Store date as a string in YYYY-MM-DD format
-        required: true,
+        required: true, default: Date.now
     },
     answers: [
         {

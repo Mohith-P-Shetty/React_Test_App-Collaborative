@@ -6,26 +6,20 @@ const addResult = async (req, res) => {
         // Extract result data from the request body
         const {
             candidateName,
+            candidateEmail,
             jobAppliedFor,
-            date,
             answers,
             score
         } = req.body;
-
-        // Validate required fields
-        if (!candidateName || !jobAppliedFor || !date || !answers) {
-            return res.status(400).json({ message: "Missing required fields." });
-        }
-
         // Generate resultid as a combination of userid and testid
-        const resultid = `${candidateName}_${jobAppliedFor}`;
+        const resultid = `${candidateEmail}_${jobAppliedFor}`;
 
         // Create a new Result document
         const newResult = new Result({
             resultid,
             candidateName,
+            candidateEmail,
             jobAppliedFor,
-            date,
             answers,
             score
         });
@@ -44,11 +38,11 @@ const addResult = async (req, res) => {
 // Fetch results by filters (dynamic query)
 const getResults = async (req, res) => {
     try {
-        const { candidateName, jobAppliedFor, date, score } = req.query;
+        const { candidateEmail, jobAppliedFor, date, score } = req.query;
 
         // Create dynamic query object
         const query = {};
-        if (candidateName) query.candidateName = candidateName;
+        if (candidateEmail) query.candidateEmail = candidateEmail;
         if (jobAppliedFor) query.jobAppliedFor = jobAppliedFor;
         if (date) query.date = date;
         if (score) query.score = parseInt(score, 10); // Convert score to integer
@@ -63,9 +57,11 @@ const getResults = async (req, res) => {
 // Fetch a single result by resultid
 const getResultById = async (req, res) => {
     try {
-        const { resultid } = req.params;
+        console.log(req.params);
 
-        const result = await Result.findOne({ resultid });
+        const { result_id } = req.params;
+        console.log(result_id);
+        const result = await Result.findOne({ result_id });
         if (!result) {
             return res.status(404).json({ message: "Result not found" });
         }

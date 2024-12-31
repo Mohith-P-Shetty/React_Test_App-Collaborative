@@ -1,0 +1,28 @@
+/* Navbar Styling */
+.collapsed-navbar {
+    width: 80px;
+  }
+  
+  .expanded-navbar {
+    width: 250px;
+  }
+  
+  /* Prevent content overlap */
+  .content-container {
+    overflow-x: hidden;
+  }
+  
+  /* Adjust navbar links in collapsed state */
+  .collapsed-navbar .nav-link {
+    justify-content: center;
+  }
+  
+  .collapsed-navbar .nav-link span {
+    display: none;
+  }
+  
+  /* Smooth transitions for layout changes */
+  .nav-link {
+    transition: padding 0.3s ease;
+  }
+  

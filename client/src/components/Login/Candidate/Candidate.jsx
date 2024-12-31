@@ -75,9 +75,11 @@ function Candidate() {
           }),
         });
         const data = await response.json();
+        console.log(data.user.candidateName);
+
         if (response.ok) {
           setAlertMessage("Login successful.");
-          dispatch(setCandidateName(formData.candidateName));
+          dispatch(setCandidateName(data.user.candidateName));
           dispatch(setCandidateEmail(formData.email));
           dispatch(setJobAppliedFor(formData.jobAppliedFor));
           navigate("/testpage");

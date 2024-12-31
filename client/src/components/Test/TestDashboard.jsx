@@ -30,6 +30,8 @@ const TestDashboard = () => {
               points: 0,
             }));
             dispatch(setQuestions(questions));
+            console.log(candidateEmail);
+
             dispatch(setCandidateEmail(candidateEmail));
           } else {
             console.error("Response data is not an array:", data);
@@ -45,6 +47,7 @@ const TestDashboard = () => {
     <div className="test-dashboard-container">
       <header className="test-dashboard-header">
         <h1>Test Page</h1>
+        <p>{candidateEmail}</p>
       </header>
       <main className="test-dashboard-main">
         <Row className="test-dashboard-row">

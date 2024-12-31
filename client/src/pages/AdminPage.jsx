@@ -1,10 +1,9 @@
-import AdminDashboard from "../components/AdminDashboard/AdminDashboard";
+import AdminMain from "../components/AdminDashboard/AdminMain";
 
 function AdminPage() {
   return (
     <div>
-      AdminMain
-      <AdminDashboard></AdminDashboard>
+      <AdminMain />
     </div>
   );
 }

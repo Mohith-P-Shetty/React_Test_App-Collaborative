@@ -7,7 +7,6 @@ import TestPage from "../pages/TestPage";
 import ResultPage from "../pages/ResultPage";
 import AdminPage from "../pages/AdminPage";
 
-
 function AppRoutes() {
   return (
     <div>
@@ -16,8 +15,8 @@ function AppRoutes() {
         <Route path="/adminlogin" element={<AdminLogin />}></Route>
         <Route path="/candidatelogin" element={<CandidateLogin />}></Route>
         <Route path="/testpage" element={<TestPage />}></Route>
-        <Route path="/adminmain" element={<AdminPage />}></Route>
-        <Route path="/result" element={<ResultPage />}></Route>
+        <Route path="/adminpage" element={<AdminPage />}></Route>
+        <Route path="/resultpage" element={<ResultPage />}></Route>
       </Routes>
     </div>
   );

@@ -60,6 +60,10 @@ const testMetaDataSlice = createSlice({
     submitTest: (state) => {
       state.isSubmitted = true;
     },
+    setTotalPoints: (state, action) => {
+      state.totalPoints = action.payload;
+      console.log(`test meta data pay load :${state.totalPoints}`);
+    },
     // Action to reset the test (e.g., clearing selected options and totalPoints)
     resetTest: (state) => {
       state.questions = state.questions.map((q) => ({
@@ -69,6 +73,7 @@ const testMetaDataSlice = createSlice({
       }));
       state.isSubmitted = false;
       state.currentQuestion = 0; // Reset the current question to the first question
+      state.totalPoints = 0;
     },
   },
 });
@@ -80,6 +85,7 @@ export const {
   selectOption,
   markAsVisited,
   setCurrentQuestion,
+  setTotalPoints,
   submitTest,
   resetTest,
 } = testMetaDataSlice.actions;

@@ -49,12 +49,15 @@ function ResultChart({ scoreData }) {
           bottom: 20,
         },
       },
+      legend: {
+        display: false, // Disable the default legend
+      },
     },
-    rotation: -90, // Start at the bottom
-    circumference: 180, // Half-circle for the gauge
-    cutout: "70%", // Hollow center for a gauge effect
-    responsive: true, // Make the chart responsive
-    maintainAspectRatio: false, // Allow resizing without maintaining aspect ratio
+    rotation: -90,
+    circumference: 180,
+    cutout: "70%",
+    responsive: true,
+    maintainAspectRatio: false,
   };
 
   return (
