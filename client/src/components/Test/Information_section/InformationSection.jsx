@@ -43,10 +43,13 @@ const InformationSection = () => {
   };
 
   const handleSubmit = () => {
+    const encodedValue = `${candidateEmail}_${jobAppliedFor}`;
+    const result_Id = encodeURIComponent(encodedValue);
     dispatch(submitTest());
     Marks();
     const compiledAnswers = compileAnswers();
     const currentResult = {
+      result_Id,
       candidateName,
       candidateEmail,
       jobAppliedFor,
@@ -60,8 +63,10 @@ const InformationSection = () => {
   const handleConfirmSubmit = async () => {
     setShowModal(false);
     try {
+      console.log(result);
+
       const response = await axios.post(
-        "http://localhost:2000/api/results/addResult",
+        "http://localhost:2000/api/results/add",
         result
       );
       console.log("Result submitted successfully:", response.data);

@@ -4,7 +4,9 @@ const Result = require("../models/ResultModel"); // Adjust the path to your mode
 const addResult = async (req, res) => {
     try {
         // Extract result data from the request body
+
         const {
+            result_Id,
             candidateName,
             candidateEmail,
             jobAppliedFor,
@@ -12,7 +14,7 @@ const addResult = async (req, res) => {
             score
         } = req.body;
         // Generate resultid as a combination of userid and testid
-        const resultid = `${candidateEmail}_${jobAppliedFor}`;
+        const resultid = `${result_Id}`;
 
         // Create a new Result document
         const newResult = new Result({
@@ -57,8 +59,6 @@ const getResults = async (req, res) => {
 // Fetch a single result by resultid
 const getResultById = async (req, res) => {
     try {
-        console.log(req.params);
-
         const { result_id } = req.params;
         console.log(result_id);
         const result = await Result.findOne({ result_id });

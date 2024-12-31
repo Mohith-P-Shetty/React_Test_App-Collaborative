@@ -3,11 +3,13 @@ const { addResult, getResults, getResultById } = require("../controllers/ResultC
 
 const router = express.Router();
 
-router.post("/addResult", addResult);
+// POST: Add a new result
+router.post("/add", addResult);
 
-router.post("/getResult", getResults);
+// GET: Fetch results by query parameters
+router.get("/", getResults);
 
-router.post("/getResultById", getResultById);
+// GET: Fetch a single result by result ID
+router.get("/:resultId", getResultById);
 
 module.exports = router;
-  

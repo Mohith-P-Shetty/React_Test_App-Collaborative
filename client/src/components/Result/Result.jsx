@@ -11,9 +11,8 @@ function Result() {
   const { candidateEmail, jobAppliedFor } = useSelector(
     (state) => state.globalData
   );
-  const resultid = `${candidateEmail}_${jobAppliedFor}`;
-  console.log(resultid);
-
+  const encodedValue = `${candidateEmail}_${jobAppliedFor}`;
+  const resultId = encodeURIComponent(encodedValue);
   const [resultData, setResultData] = useState([]);
   const [candidateInfo, setCandidateInfo] = useState({
     name: "",
@@ -29,12 +28,12 @@ function Result() {
 
   useEffect(() => {
     const fetchResult = async () => {
-      if (!resultid) return; // Ensure resultid is available
+      if (!resultId) return; // Ensure resultid is available
 
       try {
-        const response = await axios.post(
-          `http://localhost:2000/api/results/getResultById`,
-          resultid
+        // Use GET method with resultId as a parameter
+        const response = await axios.get(
+          `http://localhost:2000/api/results/${resultId}`
         );
         const data = response.data;
 
@@ -92,7 +91,7 @@ function Result() {
     };
 
     fetchResult();
-  }, [resultid]);
+  }, [resultId]);
 
   const getCategoryColor = (category) => {
     const colors = {
